@@ -47,6 +47,6 @@ export class EpisodesController {
 
         const episode = await episodesservice.listByEpisode(id);
 
-        return res.json(episode);
+        return res.json(JSON.stringify(episode));
     }
 }
