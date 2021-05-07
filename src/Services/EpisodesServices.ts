@@ -50,4 +50,11 @@ export class EpisodesService {
         return episodes
     }
 
+    async listByEpisode(id: string){
+        const episode = await this.episodesRepository.find({
+            where: {id},
+        })
+        return episode
+    }
+
 }

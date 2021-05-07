@@ -7,3 +7,4 @@ export const routes = Router();
 
 routes.post("/episodes", episodesController.create);
 routes.get("/episodes", episodesController.getEpisodes);
+routes.get("/episodes/:id", episodesController.showEpisode)
