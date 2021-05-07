@@ -6,3 +6,4 @@ const episodesController = new EpisodesController();
 export const routes = Router();
 
 routes.post("/episodes", episodesController.create);
+routes.get("/episodes", episodesController.getEpisodes);
