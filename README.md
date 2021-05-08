@@ -32,9 +32,11 @@ Sample Body:
     "thumbnail": "https://hipsters.tech/wp-content/uploads/2021/05/Hipsters-Ponto-Tech-251-900x900-1.png",
     "description": "<p>Papo sobre dois assuntos da moda: a mistura de inteligência artificial e investimentos financeiros. Como essas duas coisas se misturam e podem mudar a maneira que pensamos sobre investimentos.</p>",
     "fileurl": "https://content.blubrry.com/hipsterstech/hipsters_251_investimentos.mp3",
-    "fileduration": 2809 //in seconds
+    "fileduration": 2809 
 }
 ````
+###### fileduration need to be in seconds
+
 <br/>
 
 ### DELETE route
