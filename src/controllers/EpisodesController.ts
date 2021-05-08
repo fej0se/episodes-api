@@ -60,4 +60,36 @@ export class EpisodesController {
             'message': 'episode deleted'
         })
     }
+
+    async updateEpisode(req: Request, res: Response){
+        const {id} = req.params;
+
+        const {
+            title,
+            members,
+            published_at,
+            thumbnail,
+            description,
+            fileurl,
+            fileduration
+        } = req.body;
+
+        const episodesservice = new EpisodesService();
+
+        const episodes = await episodesservice.update({
+            id,
+            title,
+            members,
+            published_at,
+            thumbnail,
+            description,
+            fileurl,
+            fileduration  
+        })
+
+        return res.json({
+            'message': 'episode updated'
+        })
+
+    }
 }

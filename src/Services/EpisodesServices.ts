@@ -5,13 +5,13 @@ import { EpisodesRepository } from "../repositories/EpisodesRepository";
 
 interface IEpisodesCreate {
     id: string;
-    title: string;
-    members: string;
-    published_at: string;
-    thumbnail: string;
-    description: string;
-    fileurl: string;
-    fileduration: number;
+    title?: string;
+    members?: string;
+    published_at?: string;
+    thumbnail?: string;
+    description?: string;
+    fileurl?: string;
+    fileduration?: number;
 }
 
 export class EpisodesService {
@@ -41,6 +41,19 @@ export class EpisodesService {
             fileurl,
             fileduration,
         })
+
+        const episodeAlreadyExist = await this.episodesRepository.findOne({
+            id
+        })
+
+        const exist = {
+            "message": "Episodes already exist, use update route."
+        }
+
+        if(episodeAlreadyExist){
+            return exist;
+        }
+
         await this.episodesRepository.save(episodes);
         return episodes;
     }
@@ -60,6 +73,30 @@ export class EpisodesService {
     async delete(id: string){
         const episode = await this.episodesRepository.delete(id)
         return episode
+    }
+
+    async update({ 
+        id, 
+        title, 
+        members, 
+        published_at, 
+        thumbnail, 
+        description, 
+        fileurl, 
+        fileduration 
+    }: IEpisodesCreate) {
+        const episodes = this.episodesRepository.create({
+            id,
+            title,
+            members,
+            published_at,
+            thumbnail,
+            description,
+            fileurl,
+            fileduration,
+        })
+        await this.episodesRepository.save(episodes);
+        return episodes;
     }
 
 }

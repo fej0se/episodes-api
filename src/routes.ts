@@ -6,6 +6,7 @@ const episodesController = new EpisodesController();
 export const routes = Router();
 
 routes.post("/episodes", episodesController.create);
+routes.put("/update/episodes/:id", episodesController.updateEpisode)
 routes.get("/episodes", episodesController.getEpisodes);
 routes.get("/episodes/:id", episodesController.showEpisode)
 routes.delete("/delete/episodes/:id", episodesController.deleteEpisode)
