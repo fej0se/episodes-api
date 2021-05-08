@@ -8,4 +8,4 @@ export const routes = Router();
 routes.post("/episodes", episodesController.create);
 routes.get("/episodes", episodesController.getEpisodes);
 routes.get("/episodes/:id", episodesController.showEpisode)
-routes.delete("/episodes/:id", episodesController.deleteEpisode)
+routes.delete("/delete/episodes/:id", episodesController.deleteEpisode)
