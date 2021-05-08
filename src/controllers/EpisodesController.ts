@@ -56,9 +56,7 @@ export class EpisodesController {
 
         const episode = await episodeservice.delete(id);
 
-        return res.json({
-            'message': 'episode deleted'
-        })
+        return res.json(episode);
     }
 
     async updateEpisode(req: Request, res: Response){

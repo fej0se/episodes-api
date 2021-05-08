@@ -21,15 +21,15 @@ export class EpisodesService {
         this.episodesRepository = getCustomRepository(EpisodesRepository);
     }
 
-    async create({ 
-        id, 
-        title, 
-        members, 
-        published_at, 
-        thumbnail, 
-        description, 
-        fileurl, 
-        fileduration 
+    async create({
+        id,
+        title,
+        members,
+        published_at,
+        thumbnail,
+        description,
+        fileurl,
+        fileduration
     }: IEpisodesCreate) {
         const episodes = this.episodesRepository.create({
             id,
@@ -50,7 +50,7 @@ export class EpisodesService {
             "message": "Episodes already exist, use update route."
         }
 
-        if(episodeAlreadyExist){
+        if (episodeAlreadyExist) {
             return exist;
         }
 
@@ -63,27 +63,41 @@ export class EpisodesService {
         return episodes
     }
 
-    async listByEpisode(id: string){
+    async listByEpisode(id: string) {
         const episode = await this.episodesRepository.find({
-            where: {id},
+            where: { id },
         })
         return episode
     }
 
-    async delete(id: string){
-        const episode = await this.episodesRepository.delete(id)
-        return episode
+    async delete(id: string) {
+        const notFound = {
+            "message": "not found"
+        }
+
+        const episode = await this.episodesRepository.find({id})
+        if (episode.length == 1) {
+            const episode = await this.episodesRepository.delete(id)
+            return {"message": "episode sucessfully deleted"}
+        } else {
+            return {"message": "episode not found"}
+        }
+
+
+
+
+
     }
 
-    async update({ 
-        id, 
-        title, 
-        members, 
-        published_at, 
-        thumbnail, 
-        description, 
-        fileurl, 
-        fileduration 
+    async update({
+        id,
+        title,
+        members,
+        published_at,
+        thumbnail,
+        description,
+        fileurl,
+        fileduration
     }: IEpisodesCreate) {
         const episodes = this.episodesRepository.create({
             id,
