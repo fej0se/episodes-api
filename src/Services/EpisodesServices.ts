@@ -46,12 +46,8 @@ export class EpisodesService {
             id
         })
 
-        const exist = {
-            "message": "Episodes already exist, use update route."
-        }
-
         if (episodeAlreadyExist) {
-            return exist;
+            return {"message": "Episodes already exist, use update route"};
         }
 
         await this.episodesRepository.save(episodes);
@@ -71,10 +67,6 @@ export class EpisodesService {
     }
 
     async delete(id: string) {
-        const notFound = {
-            "message": "not found"
-        }
-
         const episode = await this.episodesRepository.find({id})
         if (episode.length == 1) {
             const episode = await this.episodesRepository.delete(id)
@@ -82,11 +74,6 @@ export class EpisodesService {
         } else {
             return {"message": "episode not found"}
         }
-
-
-
-
-
     }
 
     async update({
@@ -110,7 +97,7 @@ export class EpisodesService {
             fileduration,
         })
         await this.episodesRepository.save(episodes);
-        return episodes;
+        return {'message': 'episode updated'};
     }
 
 }

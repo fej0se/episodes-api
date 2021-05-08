@@ -56,7 +56,7 @@ export class EpisodesController {
 
         const episode = await episodeservice.delete(id);
 
-        return res.json(episode);
+        return res.json(episode);   
     }
 
     async updateEpisode(req: Request, res: Response){
@@ -74,7 +74,7 @@ export class EpisodesController {
 
         const episodesservice = new EpisodesService();
 
-        const episodes = await episodesservice.update({
+        const episode = await episodesservice.update({
             id,
             title,
             members,
@@ -85,9 +85,7 @@ export class EpisodesController {
             fileduration  
         })
 
-        return res.json({
-            'message': 'episode updated'
-        })
+        return res.json(episode)
 
     }
 }
