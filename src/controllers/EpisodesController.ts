@@ -49,4 +49,15 @@ export class EpisodesController {
 
         return res.json(episode[0]);
     }
+
+    async deleteEpisode(req: Request, res: Response){
+        const {id} = req.params;
+        const episodeservice = new EpisodesService();
+
+        const episode = await episodeservice.delete(id);
+
+        return res.json({
+            'message': 'episode deleted'
+        })
+    }
 }

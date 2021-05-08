@@ -57,4 +57,9 @@ export class EpisodesService {
         return episode
     }
 
+    async delete(id: string){
+        const episode = await this.episodesRepository.delete(id)
+        return episode
+    }
+
 }
